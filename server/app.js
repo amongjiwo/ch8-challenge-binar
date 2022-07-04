@@ -3,7 +3,7 @@ const swaggerUI = require("swagger-ui-express");
 const app = express();
 const cors = require("cors");
 const apiRouter = require("./routes");
-const swaggerJSON = require("./docs/swagger.json");
+const swaggerJSON = require("./docs/openapi.json");
 const errorHandler = require("./middlewares/errorHandler");
 const PORT = process.env.PORT || 4000;
 

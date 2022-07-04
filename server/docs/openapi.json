@@ -1,0 +1,495 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Binar Chapter 8 Challenge",
+    "description": "Players API Documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Players",
+      "description": "Player resources"
+    }
+  ],
+  "paths": {
+    "/players": {
+      "get": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "List of all exist players",
+        "description": "All registered players are here",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "PussySlayer613"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "pussy.slay3r@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "$2b$10$NRhpley7AsppTfzG3LmshOkmqOHdXffB/TQJ84WH3VvpWaHdzehhO"
+                      },
+                      "experience": {
+                        "type": "integer",
+                        "example": 600000
+                      },
+                      "lvl": {
+                        "type": "integer",
+                        "example": 600
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2022-06-30T13:09:42.696Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-06-30T13:09:42.696Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "Add new player",
+        "description": "Create a new player",
+        "requestBody": {
+          "description": "Player information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "GodUsop"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "godusop@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "sniper"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 3
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "GodUsop"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "godusop@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2b$10$NYlUEas473bs9NeK8GQOYugp2IULZRlxwEnM1pTsustG6.k2h/0YK"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-07-04T12:17:34.069Z"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-07-04T12:17:34.069Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "username or email cannot empty"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "Find player by id",
+        "description": "Returns a specific player by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Player id required",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "Update player by id",
+        "description": "Update a specific player",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Player id required",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Player information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "Buggy"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "buggy@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "badut33"
+                  },
+                  "experience": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "lvl": {
+                    "type": "integer",
+                    "example": 0
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Player with id: 4 successfully updated"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Not Found"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Player with 5 not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Failed to update"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      },
+      "delete": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "Delete player by id",
+        "description": "Delete a specific player",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "player id required",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Player with id: 3, was deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "FAILED"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cannot delete Player with id=5. Maybe Player was not found!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/exp/{id}": {
+      "post": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "Update player experience by id",
+        "description": "Update experience for specific player",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "player id required",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Player experience",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "exp": {
+                    "type": "integer",
+                    "example": 300000
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Player with id = 4 gain 300000 experience. Total experience = 300000"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Exp field cannot be empty"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Not found"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Player with 5 not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    }
+  },
+  "components": {}
+}
