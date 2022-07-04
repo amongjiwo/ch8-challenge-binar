@@ -151,7 +151,7 @@
             }
           },
           "400": {
-            "description": "Failed",
+            "description": "Got 2 error response",
             "content": {
               "application/json": {
                 "schema": {
@@ -163,7 +163,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "username or email cannot empty"
+                      "example": "username or email cannot empty || password cannot be empty"
                     }
                   }
                 }
@@ -198,7 +198,41 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 4
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "Buggy"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "buggy@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2b$10$NYlUEas473bs9NeK8GQOYugp2IULZRlxwEnM1pTsustG6.k2h/0YK"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 301000
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 333
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-07-04T13:06:29.652Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-07-04T14:01:47.772Z"
+                    }
+                  }
                 }
               }
             }
@@ -208,7 +242,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Not Found"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Player with 5 not found"
+                    }
+                  }
                 }
               }
             }
@@ -315,7 +359,7 @@
                   "properties": {
                     "result": {
                       "type": "string",
-                      "example": "Failed"
+                      "example": "failed"
                     },
                     "message": {
                       "type": "string",
@@ -447,7 +491,7 @@
             }
           },
           "400": {
-            "description": "Failed",
+            "description": "Got 2 error response",
             "content": {
               "application/json": {
                 "schema": {
@@ -459,7 +503,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Exp field cannot be empty"
+                      "example": "Exp field cannot be empty || Cannot update Player with id=4!"
                     }
                   }
                 }
